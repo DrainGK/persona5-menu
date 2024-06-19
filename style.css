@@ -1,0 +1,197 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+    background: rgb(255, 0, 0);
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background-image: url(/background.jpeg);
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fallback {
+    position: relative;
+    z-index: 10;
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
+}
+.fallback:hover{
+    color: red;
+}
+
+.link-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0px 16px;
+    text-decoration: none;
+    color: white;
+    font-size: 2.25em;
+    letter-spacing: 4px;
+    line-height: 1.5;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.link-wrapper:nth-child(1){
+    margin-left: 8rem;
+}
+.link-wrapper:nth-child(2){
+    margin-left: 6rem;
+}
+.link-wrapper:nth-child(3){
+    margin-left: 3rem;
+}
+.link-wrapper:nth-child(4){
+    margin-right: 7rem;
+}
+.link-wrapper:nth-child(5){
+    margin-right: 4rem;
+}
+.link-wrapper:nth-child(6){
+    margin-right: 9rem;
+}
+.link-wrapper:nth-child(7){
+    margin-right: 14rem;
+}
+.link-wrapper:nth-child(8){
+    margin-right: 12rem;
+}
+.link-wrapper:nth-child(9){
+    margin-right: 14rem;
+}
+
+.shape-wrapper {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.1s linear;
+    filter: sepia(50%) saturate(3);
+    z-index: 0;
+}
+
+.shape-wrapper .shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    overflow: hidden;
+}
+
+.shape-wrapper .shape svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.shape.red-fill {
+    fill: #FF0000;
+    animation-duration: .45s;
+    animation-delay: 0.08s;
+    opacity: .8;
+}
+
+.shape.cyan-fill {
+    fill: #00FFFF;
+    mix-blend-mode: screen;
+    animation-delay: 0.05s;
+    animation-duration: .4s;
+}
+
+.jelly {
+    animation-name: jelly;
+    transform-origin: center;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes tiltBounce {
+    0% {
+      transform: scale(1) rotate(-7deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(-7deg);
+    }
+    100% {
+      transform: scale(1.15) rotate(-7deg);
+    }
+  }
+  @keyframes tiltBounceAlt {
+    0% {
+      transform: scale(1) rotate(7deg);
+    }
+    50% {
+      transform: scale(1.5) rotate(7deg);
+    }
+    100% {
+      transform: scale(1.15) rotate(7deg);
+    }
+  }
+
+@keyframes jelly {
+    0% {
+        width: 100%;
+        transform: scale(1.25,1) skewX(20deg) translateY(3px) rotateX(40deg) rotateY(10deg) rotateZ(-10deg);
+    }
+    50% {
+        width: 100%;
+        transform: scale(1.25,1.1) skewX(-15deg) translateY(-2px) translateZ(-30px);
+    }
+    100% {
+        width: 100%;
+        transform: scale(1.25,1) skewX(20deg) translateY(3px) rotateX(-40deg) rotateY(-10deg) rotateZ(-15deg);
+    }
+}
+
+.link-wrapper:hover .shape-wrapper {
+    transform: rotate(-6deg);
+    display: block;
+}
+
+.link-wrapper:nth-child(even):hover .shape-wrapper {
+    transform: rotate(11deg);
+}
+
+.link-wrapper:hover .shape-wrapper .shape {
+    transform: scale(3, .1);
+}
+
+.link-wrapper:hover .shape-wrapper .shape.cyan-fill {
+    transform: scale(3, .1);
+}
+
+.link-wrapper:hover .shape-wrapper .shape.red-fill {
+    opacity: .8;
+    transform: scale(3, .1);
+}
+
+.link-wrapper:hover {
+    z-index: 9999;
+    animation: tiltBounce .15s ease;
+    animation-fill-mode: forwards;
+}
+
+.link-wrapper:nth-child(even):hover {
+    animation: tiltBounceAlt .15s ease;
+    animation-fill-mode: forwards;
+}
